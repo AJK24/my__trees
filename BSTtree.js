@@ -18,6 +18,7 @@ function BST() {
 
 function insert(data) {
  var n = new Node(data, null, null);
+ 	//If there isnt already a root node then it sets this to root.
  if (this.root === null) {
    this.root = n;
    }
@@ -43,4 +44,52 @@ function insert(data) {
    }
  }
 }
+
+
+function remove(data) {
+	root = removeNode(this.root, data);
+}
+function removeNode(node, data) {
+	if (node === null) {
+		return null;
+	}
+	if (data == node.data) {
+		if (node.left === null && node.right === null) {
+			return null;
+		}
+	if (node.left === null) {
+		return node.right;
+	}
+	if (node.right === null) {
+		return node.left;
+	}
+	var tempNode = getSmallest(node.right);
+	node.data = tempNode.data;
+	node.right = this.removeNode(node.right, tempNode.data);
+	return node;
+	}
+	else if (data < node.data) {
+		node.left = this.removeNode(node.left, data);
+		return node;
+	}
+	else {
+		node.right = this.removeNode(node.right, data);
+		return node;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
