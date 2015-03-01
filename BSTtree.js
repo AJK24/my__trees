@@ -1,3 +1,4 @@
+//creates the node object
 function Node(data, left, right) {
 	this.data = data;
 	this.left = left;
@@ -5,10 +6,12 @@ function Node(data, left, right) {
 	this.show = show;
 }
 
+//creates a function to show the data of a location
 function show() {
 	return this.data;
 }
 
+//creates teh Binary Search Tree object
 function BST() {
    this.root = null;
    this.insert = insert;
@@ -23,6 +26,7 @@ function BST() {
    this.getSmallest = getSmallest;
 }
 
+//Inserts a node into the BST
 function insert(data) {
       	var n = new Node(data, null, null);
 	if (this.root == null) {
@@ -49,6 +53,7 @@ function insert(data) {
 	}
 }
 
+//Sets teh BST in order
 function inOrder(node) {
       	if (!(node == null)) {
 		inOrder(node.left);
@@ -57,7 +62,7 @@ function inOrder(node) {
 	}
 }
 
-
+//Sets the binary search tree to pre-order
 function preOrder(node) {
       	if (!(node == null)) {
 		putstr(node.show() + " ");
@@ -66,6 +71,7 @@ function preOrder(node) {
 	}
 }
 
+//sets teh binary search tree to post-order
 function postOrder(node) {
 	if (!(node == null)) {
 		postOrder(node.left);
@@ -75,6 +81,7 @@ function postOrder(node) {
 }
 
 
+//Gets the smallest value on the left
 function getmin() {
 	   var current = this.root;
 	      print("debug: " + current.data);
@@ -84,6 +91,7 @@ function getmin() {
 		    return current.data;
 }
 
+//Gets the highest value on the right
 function getmax() {
 	   var current = this.root;
 	      while (!(current.right == null)) {
@@ -92,9 +100,11 @@ function getmax() {
 	         return current.data;
 }
 
+//finds the  location of data in the BST
 function find(data) {
 	var current = this.root;
-	while (current.data != data) {
+	//Has to be both current and current.data in case of an empty BST
+	while (current && current.data != data) {
 		if (data < current.data) {
 			current = current.left;
 		}
@@ -108,6 +118,7 @@ function find(data) {
 	return current;
 }
 
+//Finds the smallest node in the BST
 function getSmallest(node) {
 	if (node.left == null) {
 		return node;		   
@@ -117,11 +128,13 @@ function getSmallest(node) {
 	}
 }
 
+//removes a node from the data
 function remove(data) {
 	   root = removeNode(this.root, data);
 }
 
 
+//deals with the reorganization after removing the node
 function removeNode(node, data) {
 	   if (node == null){
 		 return null;
@@ -160,7 +173,7 @@ function removeNode(node, data) {
 
 
 
-
+//testing
 
 var nums = new BST();
 nums.insert(23);
