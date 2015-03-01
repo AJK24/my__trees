@@ -24,6 +24,7 @@ function BST() {
    this.remove = remove;
    this.removeNode = removeNode;
    this.getSmallest = getSmallest;
+   this.findMax = findMax;
 }
 
 //Inserts a node into the BST
@@ -47,7 +48,7 @@ function insert(data) {
 			else {
 				current = current.right;
 				if (current == null) {
-			 		parent.right = n;								 break:									 }
+			 		parent.right = n;								 break;									 }
 													 }
 		 }
 	}
@@ -153,9 +154,9 @@ function removeNode(node, data) {
 			   return node.left;
 	  	 }
           	 // node has two children
-         	  var tempNode = getSmallest(node.right);
+         	 var tempNode = getSmallest(node.right);
 	  	 node.data = tempNode.data;
-	 	  node.right = removeNode(node.right, tempNode.data);
+	 	 node.right = removeNode(node.right, tempNode.data);
 	  	 return node;
 	   }
 	   else if (data < node.data) {
@@ -166,6 +167,21 @@ function removeNode(node, data) {
 		   node.right = removeNode(node.right, data);
 		   return node;
 	   }
+}
+
+
+/////HOMEWORK SECTION FINDING THE MAXIMUM IN A BINARY SEARCH TREE!
+
+function findMax(bst){
+	node = bst.root;
+	while(node.right != null){
+		node = node.right;
+	}
+	
+	print(node.data);
+	return node.data;
+
+
 }
 
 
@@ -183,6 +199,9 @@ nums.insert(37);
 nums.insert(3);
 nums.insert(99);
 nums.insert(22);
+
+print(nums.findMax(nums));
+
 /*print("Inorder traversal: ");
  * inOrder(nums.root);
  * print("\n");
@@ -207,45 +226,11 @@ nums.insert(22);
  *    else {
  *       print(value + " was not found in the BST.");
  *       }*/
-inOrder(nums.root);
-print("\n");
-var num = parseInt(readline());
-nums.remove(num);
-inOrder(nums.root);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//inOrder(nums.root);
+//print("\n");
+//var num = parseInt(readline());
+//nums.remove(num);
+//inOrder(nums.root);
 
 
